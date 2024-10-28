@@ -1,3 +1,3 @@
 export default function Home() {
-  return <div className="">Jira Project Management</div>;
+  return <div className=""></div>;
 }
