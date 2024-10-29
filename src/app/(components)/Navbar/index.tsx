@@ -1,11 +1,22 @@
 import React from "react";
-import { Search, Settings } from "lucide-react";
+import { MenuIcon, MoonIcon, Search, Settings, Sun, SunIcon } from "lucide-react";
 import Link from "next/link";
+import { useAppDispatch, useAppSelector } from "@/app/redux";
+import { setIsDarkMode, setIsSidebarCollapsed } from "@/state";
 const Navbar = () => {
+  const disptach = useAppDispatch();
+  const isSidebarOpen = useAppSelector((state) => state.global.isSidebarCollapsed);
+  const isDarkMode = useAppSelector((state) => state.global.isDarkMode);
+
   return (
     <div className="flex items-center justify-between bg-white px-4 py-3 dark:bg-black">
       {/* Search Bar */}
       <div className="flex items-center gap-8">
+        {!isSidebarOpen ? null : (
+          <button onClick={()=> disptach(setIsSidebarCollapsed(!isSidebarOpen))}>
+            <MenuIcon className="size-8 dark:text-white"/>
+          </button>
+        )}
         <div className="relative flex h-min w-[200px]">
           <Search className="absolute left-[4px] top-1/2 mr-2 size-5 -translate-y-1/2 transform cursor-pointer dark:text-white" />
           <input
@@ -18,6 +29,12 @@ const Navbar = () => {
 
       {/* Icons */}
       <div className="flex items-center">
+        <button onClick={()=> disptach(setIsDarkMode(!isDarkMode))}
+          className={isDarkMode ? "rounded p-2 dark:hover:bg-gray-700":"rounded p-2 hover:bg-gray-100"}
+          >
+          {isDarkMode ? (<SunIcon className="size-6 cursor-pointer dark:text-white"/>) :
+           (<MoonIcon  className="size-6 cursor-pointer dark:text-white"/>) }
+        </button>
         <Link
           href="/settings"
           className="h-min w-min rounded p-2 hover:bg-gray-100"
