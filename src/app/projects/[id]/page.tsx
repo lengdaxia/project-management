@@ -1,9 +1,26 @@
-import React from "react";
+"use client";
 
-type Props = {};
+import React, { useState } from "react";
+import ProjectHeader from "../project-header";
 
-const Project = (props: Props) => {
-  return <div>Project</div>;
+type Props = {
+  params: { id: string };
+};
+
+const Project = ({ params }: Props) => {
+  const { id } = params;
+  const [activeTab, setActiveTab] = useState("Board");
+  const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
+
+  return (
+    <div className="">
+      {/* Header */}
+      <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
+      {/* filter & search input $ etc.. */}
+
+      {/* Board */}
+    </div>
+  );
 };
 
 export default Project;

@@ -31,16 +31,13 @@ import { useToggle } from "react-use";
 const Sidebar = () => {
   const [showProjects, setShowProjects] = useToggle(true);
   const [showPriority, setShowPriority] = useToggle(true);
-  const { data: projects, isLoading } = useGetProjectsQuery();
+  const { data: projects } = useGetProjectsQuery();
 
   const dispath = useAppDispatch();
   const isSidebarCollapsed = useAppSelector(
     (state) => state.global.isSidebarCollapsed,
   );
 
-  useEffect(() => {
-    console.log("projects: ", JSON.stringify(projects));
-  }, [isLoading]);
   const sidebarClassNames = `fixed flex flex-col h-[100%] justify-between shadow-xl
    transition-all duration-300 h-full z-40 dark:bg-black 
    overflow-y-auto bg-white ${isSidebarCollapsed ? "w-0 hidden" : "w-64"}`;
@@ -110,7 +107,7 @@ const Sidebar = () => {
               key={project.id}
               icon={Briefcase}
               label={project.name}
-              href={`projects/${project.id}/`}
+              href={`/projects/${project.id}`}
             />
           ))}
 
