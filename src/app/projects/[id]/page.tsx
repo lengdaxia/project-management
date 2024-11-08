@@ -2,6 +2,7 @@
 
 import React, { useState } from "react";
 import ProjectHeader from "../project-header";
+import BoardView from "../board-view";
 
 type Props = {
   params: { id: string };
@@ -9,6 +10,8 @@ type Props = {
 
 const Project = ({ params }: Props) => {
   const { id } = params;
+  console.log("ProjectId: ", id);
+
   const [activeTab, setActiveTab] = useState("Board");
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
 
@@ -16,9 +19,11 @@ const Project = ({ params }: Props) => {
     <div className="">
       {/* Header */}
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
-      {/* filter & search input $ etc.. */}
 
       {/* Board */}
+      {activeTab === "Board" && (
+        <BoardView id={id} setIsNewTaskOpen={setIsNewTaskOpen} />
+      )}
     </div>
   );
 };
