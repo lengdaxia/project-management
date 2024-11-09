@@ -26,10 +26,10 @@ export enum Priority {
 
 export interface Task {
   id: number;
-  name: string;
+  title: string;
   description?: string;
-  stateDate?: string;
-  endDate?: string;
+  startDate?: string;
+  dueDate?: string;
   status?: Status;
   priority?: Priority;
   tags?: string;
