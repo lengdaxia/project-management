@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import ProjectHeader from "../project-header";
 import BoardView from "../board-view";
+import ListView from "../list-view";
 
 type Props = {
   params: { id: string };
@@ -16,13 +17,18 @@ const Project = ({ params }: Props) => {
   const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
 
   return (
-    <div className="">
+    <div>
       {/* Header */}
       <ProjectHeader activeTab={activeTab} setActiveTab={setActiveTab} />
 
       {/* Board */}
       {activeTab === "Board" && (
         <BoardView id={id} setIsNewTaskOpen={setIsNewTaskOpen} />
+      )}
+
+      {/* List */}
+      {activeTab === "List" && (
+        <ListView id={id} setIsModalNewTaskOpen={setIsNewTaskOpen} />
       )}
     </div>
   );

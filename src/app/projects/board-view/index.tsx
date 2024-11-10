@@ -40,7 +40,7 @@ const BoardView = ({ id, setIsNewTaskOpen }: BoardProps) => {
 
   return (
     <DndProvider backend={HTML5Backend}>
-      <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-1 gap-4 p-4 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
         {taskStatus.map((status) => (
           <TaskColumn
             key={status}
@@ -90,7 +90,7 @@ const TaskColumn = ({
       ref={(instance) => {
         drop(instance);
       }}
-      className={`sl:py-4 rounded-lg py-2 xl:px-2 ${isOver ? "bg-blue-100 dark:bg-neutral-950" : ""}`}
+      className={`rounded-lg py-2 sm:py-4 xl:px-2 ${isOver ? "bg-blue-100 dark:bg-neutral-950" : ""}`}
     >
       <div className="mb-3 flex w-full">
         <div
