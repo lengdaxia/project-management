@@ -7,7 +7,6 @@ import {
   ListIcon,
   PlusSquare,
   Share2Icon,
-  ShareIcon,
   TableIcon,
 } from "lucide-react";
 import React, { useState } from "react";
