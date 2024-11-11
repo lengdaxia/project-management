@@ -5,11 +5,13 @@ import {
   Grid3x3Icon,
   Grid3X3Icon,
   ListIcon,
+  PlusSquare,
   Share2Icon,
   ShareIcon,
   TableIcon,
 } from "lucide-react";
 import React, { useState } from "react";
+import ModalNewProject from "./modal-new-project";
 
 type Props = {
   activeTab: string;
@@ -17,12 +19,27 @@ type Props = {
 };
 
 const ProjectHeader = ({ activeTab, setActiveTab }: Props) => {
-  const [isNewTaskOpen, setIsNewTaskOpen] = useState(false);
+  const [isModalNewProjectOpen, setIsModalNewProjectOpen] = useState(false);
   return (
     <div className="px-4 xl:px-6">
       {/* Moal new project */}
+      <ModalNewProject
+        isOpen={isModalNewProjectOpen}
+        onClose={() => setIsModalNewProjectOpen(false)}
+      />
+
       <div className="py-6 lg:pb-4 lg:pt-8">
-        <Header name="Project Design Development" />
+        <Header
+          name="Project Design Development"
+          buttonComponent={
+            <button
+              className="flex items-center rounded-md bg-blue-primary px-3 py-2 text-white hover:bg-blue-600"
+              onClick={() => setIsModalNewProjectOpen(true)}
+            >
+              <PlusSquare className="mr-2 h-5 w-5" /> New Boards
+            </button>
+          }
+        />
       </div>
 
       {/* Tabs */}
