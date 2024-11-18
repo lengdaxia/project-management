@@ -5,7 +5,7 @@ const nextConfig = {
       {
         protocol: "https",
         hostname: "jira-pm-s3-images.s3.ap-northeast-1.amazonaws.com",
-        prot: "",
+        port: "",
         pathname: "/**"
       }
     ]
